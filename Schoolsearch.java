@@ -44,7 +44,7 @@ public class Schoolsearch {
       public String getTFirstName() { return tFirstName; }
     
   }
-
+// test
   public static void main(String[] args) {
 
         ArrayList<Student> students = readFile();
