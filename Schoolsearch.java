@@ -47,24 +47,53 @@ public class Schoolsearch {
 
   public static void main(String[] args) {
 
-        // user input 
+        ArrayList<Student> students = readFile();
         Scanner sc = new Scanner(System.in);
         String in = "";
+        String searchVal; 
 
         System.out.print("What do you want to search for? ");
 
-        while (!in.equals("Q") || !in.equals("Quit")) { // how to check for Q or Quit
-            String searchVal;
+        while (!in.equals("Q") && !in.equals("Quit")) { // how to check for Q or Quit
             in = sc.nextLine();
             if (in.contains("S")) {
                 // searchFile for <lastname>
-                System.out.println(searchVal);
             }
             System.out.print("What do you want to search for? ");
         }
 
   }
-  private ArrayList<Student> searchFile(String search) {
+
+  private void Student(ArrayList<Student> students, String lastName, String bus) {
+
+  }
+
+  private void Teacher(ArrayList<Student> students, String lastName) {
+
+  }
+
+  private void Grade(ArrayList<Student> students, String number) {
+
+  }
+
+  private void Bus(ArrayList<Student> students, String number) {
+
+  }
+
+  private void GradeHL(ArrayList<Student> students, int HL) {
+
+  }
+
+  private void Average(ArrayList<Student> students, String number) {
+
+  }
+
+  private void Info(ArrayList<Student> students) {
+
+  }
+
+
+  private ArrayList<Student> readFile() {
 
       ArrayList<Student> students = new ArrayList<Student>();
       String fileName = "students.txt";
