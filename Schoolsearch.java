@@ -63,11 +63,11 @@ public class Schoolsearch {
 
             String instruction = inList[0];
             String lastNameNum = ""; 
+            int listSize = inList.length; 
 
             if (inList.length > 1)  
                 lastNameNum = inList[1]; 
             if (instruction.equals("S:") || instruction.equals("Student:")) {
-                int listSize = inList.length; 
                 if (listSize == 2) {
                     schoolsearch.student(students, lastNameNum, null); 
                 } else if (listSize == 3) {
@@ -76,12 +76,18 @@ public class Schoolsearch {
             } else if (instruction.equals("T:") || instruction.equals("Teacher:")) {
                 schoolsearch.teacher(students, lastNameNum); 
             } else if (instruction.equals("G:") || instruction.equals("Grade:")) {
-                schoolsearch.grade(students, lastNameNum); 
-            } /*else if (instruction.equals("B:") || instruction.equals("Bus:")) {
+                if (listSize == 2) {
+                    schoolsearch.grade(students, lastNameNum); 
+                } else if (listSize == 3) {
+                    schoolsearch.gradeHL(students, lastNameNum, Integer.parseInt(inList[2])); 
+                }
+            } else if (instruction.equals("B:") || instruction.equals("Bus:")) {
                 schoolsearch.bus(students, lastNameNum); 
-            } else if (instruction.equals("G:") || instruction.equals("Grade:")) {
-                schoolsearch.gradeHL(students, lastNameNum, inList[2]);
-            }*/ 
+            } else if (instruction.equals("A:") || instruction.equals("Average:")) {
+                schoolsearch.average(students, lastNameNum); 
+            } else if (instruction.equals("I:") || instruction.equals("Info:")) {
+                schoolsearch.info(students); 
+            }
             
             if (!in.equals("Q") && !in.equals("Quit"))
                 System.out.print("What do you want to search for? ");
