@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*; 
+import java.lang.*; 
 
 public class Schoolsearch {
 
@@ -79,13 +80,17 @@ public class Schoolsearch {
                 if (listSize == 2) {
                     schoolsearch.grade(students, lastNameNum); 
                 } else if (listSize == 3) {
-                    schoolsearch.gradeHL(students, lastNameNum, Integer.parseInt(inList[2])); 
+                    if (inList[2].equals("H") || inList[2].equals("High")) {
+                        schoolsearch.gradeHL(students, lastNameNum, 0);  
+                    } else if (inList[2].equals("L") || inList[2].equals("Low")) {
+                        schoolsearch.gradeHL(students, lastNameNum, 1); 
+                    }
                 }
             } else if (instruction.equals("B:") || instruction.equals("Bus:")) {
                 schoolsearch.bus(students, lastNameNum); 
             } else if (instruction.equals("A:") || instruction.equals("Average:")) {
                 schoolsearch.average(students, lastNameNum); 
-            } else if (instruction.equals("I:") || instruction.equals("Info:")) {
+            } else if (instruction.equals("I") || instruction.equals("Info")) {
                 schoolsearch.info(students); 
             }
             
@@ -153,27 +158,39 @@ private void bus(ArrayList<Student> students, String number) {
       int listSize = students.size();
       double gpa = 0;
       int index = 0;
+      int count = 0; 
+      boolean exists = false; 
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getGrade().equals(number))) {
+              exists = true; 
+              if (count == 0) {
+                gpa = Double.parseDouble(students.get(i).getGPA()); 
+                index = i; 
+              }
               if(HL == 0) {
-                  double tempGPA = Double.parserDouble(students.get(i).getGPA());
+                  double tempGPA = Double.parseDouble(students.get(i).getGPA());
                   if(tempGPA > gpa) {
+                      gpa = tempGPA; 
                       index = i;
                   }
               }
               else if(HL == 1) {
-                  double tempGPA = Double.parserDouble(students.get(i).getGPA());
+                  double tempGPA = Double.parseDouble(students.get(i).getGPA());
                   if(tempGPA < gpa) {
+                      gpa = tempGPA; 
                       index = i;
                   }
               }
+              count++; 
           }
       }
 
-      System.out.println(students.get(i).getStLastName() + " " + students.get(i).getStFirstName() + " " +
-                         students.get(i).getGPA() + " " + students.get(i).getTFirstName() + " " +
-                         students.get(i).getTLastName() + " " + students.get(i).getBus());
+      if (exists) {
+      System.out.println(students.get(index).getStLastName() + " " + students.get(index).getStFirstName() + " " +
+                         students.get(index).getGPA() + " " + students.get(index).getTFirstName() + " " +
+                         students.get(index).getTLastName() + " " + students.get(index).getBus());
+      }
 
   }
 
@@ -191,16 +208,18 @@ private void bus(ArrayList<Student> students, String number) {
       for(double d : gpas) {
           sum += d;
       }
-      double avg = sum / gpas.size();
+      double avg = 0; 
+      if (sum != 0)
+        avg = sum / gpas.size();
       System.out.println(number + " " + avg);
   }
 
-  private void Info(ArrayList<Student> students) {
+  private void info(ArrayList<Student> students) {
 
       int[] totals = new int[7];
 
       for(Student s : students) {
-          totals[Integer.parseInteger(s.getGrade())]++;
+          totals[Integer.parseInt(s.getGrade())]++;
       }
 
       for(int i = 0; i < 7; i++) {
