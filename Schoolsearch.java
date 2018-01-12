@@ -131,7 +131,7 @@ public class Schoolsearch {
 
   }
 
-private void Bus(ArrayList<Student> students, String number) {
+private void bus(ArrayList<Student> students, String number) {
       int listSize = students.size();
 
       for (int i = 0; i < listSize; i++) {
@@ -143,7 +143,7 @@ private void Bus(ArrayList<Student> students, String number) {
 
   }
 
-  private void GradeHL(ArrayList<Student> students, String number, int HL) {
+  private void gradeHL(ArrayList<Student> students, String number, int HL) {
       int listSize = students.size();
       double gpa = 0;
       int index = 0;
@@ -171,7 +171,7 @@ private void Bus(ArrayList<Student> students, String number) {
 
   }
 
-  private void Average(ArrayList<Student> students, String number) {
+  private void average(ArrayList<Student> students, String number) {
       int listSize = students.size();
       ArrayList<Double> gpas = new ArrayList<Double>();
 
