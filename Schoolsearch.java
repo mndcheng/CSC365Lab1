@@ -47,12 +47,13 @@ public class Schoolsearch {
 
   public static void main(String[] args) {
 
+        Schoolsearch schoolsearch = new Schoolsearch(); 
         ArrayList<Student> students = new ArrayList<Student>();
         Scanner sc = new Scanner(System.in);
         String in = "";
         String[] inList; 
 
-        readFile(students); 
+        schoolsearch.readFile(students); 
 
         System.out.print("What do you want to search for? ");
 
@@ -65,27 +66,31 @@ public class Schoolsearch {
             if (instruction.equals("S:") || instruction.equals("Student:")) {
                 int listSize = inList.length; 
                 if (listSize == 2) {
-                    student(students, lastNameNum, null); 
+                    schoolsearch.student(students, lastNameNum, null); 
                 } else if (listSize == 3) {
-                    student(students, lastNameNum, inList[2]); 
+                    schoolsearch.student(students, lastNameNum, inList[2]); 
                 }
             } else if (instruction.equals("T:") || instruction.equals("Teacher:")) {
-                //teacher(students, lastNameNum); 
+                //schoolsearch.teacher(students, lastNameNum); 
             } else if (instruction.equals("G:") || instruction.equals("Grade:")) {
-                //grade(students, lastNameNum); 
+                //schoolsearch.grade(students, lastNameNum); 
             } else if (instruction.equals("B:") || instruction.equals("Bus:")) {
-                //bus(students, lastNameNum); 
+                //schoolsearch.bus(students, lastNameNum); 
             } // incomplete 
             System.out.print("What do you want to search for? ");
         }
 
   }
 
+  public Schoolsearch() {
+      // constructor
+  }
+
   private void student(ArrayList<Student> students, String lastName, String bus) {
       int listSize = students.size(); 
 
       for (int i = 0; i < listSize; i++) {
-          if (students.get(i).contains(lastName)) {
+          if ((students.get(i).getStLastName()).equals(lastName)) {
               if (bus == null) {
                 System.out.print(students.get(i).getStLastName() + " " + students.get(i).getStFirstName() + " "); 
                 System.out.print(students.get(i).getGrade() + " " + students.get(i).getClassroom() + " "); 
