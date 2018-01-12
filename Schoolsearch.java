@@ -129,16 +129,62 @@ public class Schoolsearch {
 
   }
 
-  private void bus(ArrayList<Student> students, String number) {
+private void Bus(ArrayList<Student> students, String number) {
+      int listSize = students.size();
+
+      for (int i = 0; i < listSize; i++) {
+          if ((students.get(i).getBus().equals(number))) {
+              System.out.println(students.get(i).getStLastName() + " " + students.get(i).getStFirstName() + " " +
+                                 students.get(i).getGrade() + " " + students.get(i).getClassroom());
+          }
+      }
 
   }
 
-  private void gradeHL(ArrayList<Student> students, int HL) {
+  private void GradeHL(ArrayList<Student> students, String number, int HL) {
+      int listSize = students.size();
+      double gpa = 0;
+      int index = 0;
+
+      for (int i = 0; i < listSize; i++) {
+          if ((students.get(i).getGrade().equals(number))) {
+              if(HL == 0) {
+                  double tempGPA = Double.parserDouble(students.get(i).getGPA());
+                  if(tempGPA > gpa) {
+                      index = i;
+                  }
+              }
+              else if(HL == 1) {
+                  double tempGPA = Double.parserDouble(students.get(i).getGPA());
+                  if(tempGPA < gpa) {
+                      index = i;
+                  }
+              }
+          }
+      }
+
+      System.out.println(students.get(i).getStLastName() + " " + students.get(i).getStFirstName() + " " +
+                         students.get(i).getGPA() + " " + students.get(i).getTFirstName() + " " +
+                         students.get(i).getTLastName() + " " + students.get(i).getBus());
 
   }
 
-  private void average(ArrayList<Student> students, String number) {
+  private void Average(ArrayList<Student> students, String number) {
+      int listSize = students.size();
+      ArrayList<Double> gpas = new ArrayList<Double>();
 
+      for (int i = 0; i < listSize; i++) {
+          if ((students.get(i).getGrade().equals(number))) {
+              gpas.add(Double.parseDouble(students.get(i).getGPA()));
+          }
+      }
+
+      double sum = 0;
+      for(double d : gpas) {
+          sum += d;
+      }
+      double avg = sum / gpas.size();
+      System.out.println(number + " " + avg);
   }
 
   private void info(ArrayList<Student> students) {
