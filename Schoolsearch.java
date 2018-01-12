@@ -77,9 +77,11 @@ public class Schoolsearch {
                 schoolsearch.teacher(students, lastNameNum); 
             } else if (instruction.equals("G:") || instruction.equals("Grade:")) {
                 schoolsearch.grade(students, lastNameNum); 
-            } else if (instruction.equals("B:") || instruction.equals("Bus:")) {
+            } /*else if (instruction.equals("B:") || instruction.equals("Bus:")) {
                 schoolsearch.bus(students, lastNameNum); 
-            } // incomplete 
+            } else if (instruction.equals("G:") || instruction.equals("Grade:")) {
+                schoolsearch.gradeHL(students, lastNameNum, inList[2]);
+            }*/ 
             
             if (!in.equals("Q") && !in.equals("Quit"))
                 System.out.print("What do you want to search for? ");
