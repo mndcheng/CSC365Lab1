@@ -195,7 +195,17 @@ private void bus(ArrayList<Student> students, String number) {
       System.out.println(number + " " + avg);
   }
 
-  private void info(ArrayList<Student> students) {
+  private void Info(ArrayList<Student> students) {
+
+      int[] totals = new int[7];
+
+      for(Student s : students) {
+          totals[Integer.parseInteger(s.getGrade())]++;
+      }
+
+      for(int i = 0; i < 7; i++) {
+          System.out.println(i + ": " + totals[i]);
+      }
 
   }
 
