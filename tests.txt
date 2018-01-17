@@ -1,5 +1,6 @@
 // CSC 365. Winter 2018
 // Lab 1-1 test suite
+// Dylan Carr, Amanda Cheng
 
 // TC-1
 // Tests Requirements R3, R4
@@ -110,3 +111,52 @@ B: 53
 // expected output: <empty line>
 
 Bus: 100
+
+// TC-13
+// Tests Requirements R3, R9
+// long form command name, grade with students, high GPA
+// expected output: SWEDLUND,SHARRI, 3.24, FAFARD,ROCIO, 55
+
+Grade: 3
+
+// TC-14
+// Tests Requirements R3, R9
+// short form command name, grade with students, low GPA
+// expected output: IMMERMAN,DEVIN, 2.78, HANTZ,JED, 52
+
+G: 4
+
+// TC-15
+// Tests Requirements R3, R10
+// long form command name, grade with students, average
+// expected output: grade, average gpa
+
+Grade: 4
+
+// TC-16
+// Tests Requirements R3, R10
+// short form command name, grade with no students
+// expected output: <empty line>
+
+G: 0
+
+// TC-17
+// Tests Requirements R3, R11
+// long form command name, Info
+// expected output: <Grade>: <Number of Students> (ascending order 0->5)
+
+Info
+
+// TC-18
+// Tests Requirements R3, R12
+//  long form command name, quit command
+// expected output: program terminates
+
+Quit
+
+// TC-19
+// Tests Requirements R3, R12
+//  short form command name, quit command
+// expected output: program terminates
+
+Q
