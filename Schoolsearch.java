@@ -13,11 +13,8 @@ public class Schoolsearch {
       String stLastName;
       String stFirstName;
       String grade;
-      String classroom;
       String bus;
       String gpa;
-      String tLastName;
-      String tFirstName;
       
       public Student(String stLastName, String stFirstName, String grade, String classroom, 
                      String bus, String gpa, String tLastName, String tFirstName) {
@@ -38,16 +35,29 @@ public class Schoolsearch {
       
       public String getGrade() { return grade; }
       
-      public String getClassroom() { return classroom; }
-      
       public String getBus() { return bus; }
       
       public String getGPA() { return gpa; }
-      
-      public String getTLastName() { return tLastName; }
-      
-      public String getTFirstName() { return tFirstName; }
     
+  }
+
+  public class Teacher {
+      
+        String classroom; 
+        String tLastName;
+        String tFirstName;
+
+        public Teacher(String classroom, String tLastName, String tFirstName) {
+            this.classroom = classroom; 
+            this.tLastName = tLastName;
+            this.tFirstName = tFirstName;
+        }
+
+        public String getClassroom() { return classroom; }
+
+        public String getTLastName() { return tLastName; }
+
+        public String getTFirstName() { return tFirstName; }
   }
 
   public static void main(String[] args) {
