@@ -117,33 +117,40 @@ Bus: 100
 // long form command name, grade with students, high GPA
 // expected output: SWEDLUND,SHARRI, 3.24, FAFARD,ROCIO, 55
 
-Grade: 3
+Grade: 3 High
 
 // TC-14
 // Tests Requirements R3, R9
 // short form command name, grade with students, low GPA
 // expected output: IMMERMAN,DEVIN, 2.78, HANTZ,JED, 52
 
-G: 4
+G: 4 L
 
 // TC-15
 // Tests Requirements R3, R10
 // long form command name, grade with students, average
 // expected output: grade, average gpa
 
-Grade: 4
+Average: 4
 
 // TC-16
 // Tests Requirements R3, R10
-// short form command name, grade with no students
+// short form command name, grade with no students, Average
 // expected output: <empty line>
 
-G: 0
+A: 0
 
 // TC-17
 // Tests Requirements R3, R11
 // long form command name, Info
-// expected output: <Grade>: <Number of Students> (ascending order 0->5)
+// expected output: 0: 0
+//                  1: 2
+//                  2: 13
+//                  3: 9
+//                  4: 15
+//                  5: 0
+//                  6: 21
+
 
 Info
 
