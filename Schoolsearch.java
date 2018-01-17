@@ -13,20 +13,19 @@ public class Schoolsearch {
       String stLastName;
       String stFirstName;
       String grade;
+      String classroom; 
       String bus;
       String gpa;
       
       public Student(String stLastName, String stFirstName, String grade, String classroom, 
-                     String bus, String gpa, String tLastName, String tFirstName) {
+                     String bus, String gpa) {
                      
         this.stLastName = stLastName;
         this.stFirstName = stFirstName;
         this.grade = grade;
         this.classroom = classroom;
         this.bus = bus;
-        this.gpa = gpa;
-        this.tLastName = tLastName;
-        this.tFirstName = tFirstName;   
+        this.gpa = gpa; 
       }
       
       public String getStLastName() { return stLastName; }
@@ -64,6 +63,7 @@ public class Schoolsearch {
 
         Schoolsearch schoolsearch = new Schoolsearch(); 
         ArrayList<Student> students = new ArrayList<Student>();
+        ArrayList<Teacher> teachers = new ArrayList<Teacher>(); 
         Scanner sc = new Scanner(System.in);
         String in = "";
         String[] inList; 
@@ -82,11 +82,12 @@ public class Schoolsearch {
 
             if (inList.length > 1)  
                 lastNameNum = inList[1]; 
+                
             if (instruction.equals("S:") || instruction.equals("Student:")) {
                 if (listSize == 2) {
-                    schoolsearch.student(students, lastNameNum, null); 
+                    schoolsearch.student(students, teachers, lastNameNum, null); 
                 } else if (listSize == 3) {
-                    schoolsearch.student(students, lastNameNum, inList[2]); 
+                    schoolsearch.student(students, teachers, lastNameNum, inList[2]); 
                 }
             } else if (instruction.equals("T:") || instruction.equals("Teacher:")) {
                 schoolsearch.teacher(students, lastNameNum); 
@@ -118,8 +119,8 @@ public class Schoolsearch {
       // constructor
   }
 
-  private void student(ArrayList<Student> students, String lastName, String bus) {
-      int listSize = students.size(); 
+  private void student(ArrayList<Student> students, ArrayList<Teacher> teachers, String lastName, String bus) {
+      int listSize = students.size();  
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getStLastName()).equals(lastName)) {
