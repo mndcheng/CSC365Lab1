@@ -110,12 +110,12 @@ public class Schoolsearch {
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getStLastName()).equals(lastName)) {
               if (bus == null) {
-                System.out.print(students.get(i).getStLastName() + " " + students.get(i).getStFirstName() + " "); 
-                System.out.print(students.get(i).getGrade() + " " + students.get(i).getClassroom() + " "); 
-                System.out.println(students.get(i).getTLastName() + " " + students.get(i).getTFirstName()); 
+                System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + ","); 
+                System.out.print(students.get(i).getGrade() + "," + students.get(i).getClassroom() + ","); 
+                System.out.println(students.get(i).getTLastName() + "," + students.get(i).getTFirstName()); 
               } else {
                 if (bus.equals("B") || bus.equals("Bus"))
-                    System.out.println(students.get(i).getStLastName() + " " + students.get(i).getStFirstName() + " " + students.get(i).getBus()); 
+                    System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + "," + students.get(i).getBus()); 
               }
           }
       }
@@ -126,7 +126,7 @@ public class Schoolsearch {
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getTLastName()).equals(lastName)) {
-              System.out.println(students.get(i).getStLastName() + " " + students.get(i).getStFirstName()); 
+              System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName()); 
           }
       }
   }
@@ -136,7 +136,7 @@ public class Schoolsearch {
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getGrade().equals(number))) {
-              System.out.println(students.get(i).getStLastName() + " " + students.get(i).getStFirstName()); 
+              System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName()); 
           }
       }
 
@@ -147,8 +147,8 @@ private void bus(ArrayList<Student> students, String number) {
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getBus().equals(number))) {
-              System.out.println(students.get(i).getStLastName() + " " + students.get(i).getStFirstName() + " " +
-                                 students.get(i).getGrade() + " " + students.get(i).getClassroom());
+              System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + "," +
+                                 students.get(i).getGrade() + "," + students.get(i).getClassroom());
           }
       }
 
@@ -187,9 +187,9 @@ private void bus(ArrayList<Student> students, String number) {
       }
 
       if (exists) {
-      System.out.println(students.get(index).getStLastName() + " " + students.get(index).getStFirstName() + " " +
-                         students.get(index).getGPA() + " " + students.get(index).getTFirstName() + " " +
-                         students.get(index).getTLastName() + " " + students.get(index).getBus());
+      System.out.println(students.get(index).getStLastName() + "," + students.get(index).getStFirstName() + "," +
+                         students.get(index).getGPA() + "," + students.get(index).getTFirstName() + "," +
+                         students.get(index).getTLastName() + "," + students.get(index).getBus());
       }
 
   }

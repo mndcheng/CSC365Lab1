@@ -1,1 +1,86 @@
+// CSC 365. Winter 2018
+// Lab 1-1 test suite
 
+// TC-1
+// Tests Requirements R3, R4
+// short form command name, existing student
+// expected output: HAVIR,BOBBIE,2,108,HAMER,GAVIN
+
+S: HAVIR
+
+// TC-2
+// Tests Requirements R3, R4
+// long form command name, existing student
+// expected output: VILARDO,EMMANUEL,2,104,STEIB,GALE
+
+Student: VILARDO
+
+// TC-3
+// Tests Requirements R3, R4
+// long form command name, non-existing student
+// expected output: <empty line>
+
+Student: SMITH
+
+// TC-4
+// Tests Requirements R3, R5
+// short form command name, existing student, short form command
+// expected output: BERBES,DICK,54
+
+S: BERBES B
+
+// TC-5
+// Tests Requirements R3, R5
+// long form command name, existing student, long form command
+// expected output: TOWLEY,LANE,54
+
+Student: TOWLEY Bus
+
+// TC-6
+// Tests Requirements R3, R5
+// long form command name, non-existing student, short form command
+// expected output: <empty line>
+
+//
+
+// TC-7
+// Tests Requirements R3, R6
+// short form command name, existing teacher
+// expected output: 
+
+// 
+
+// TC-8
+// Tests Requirements R3, R6
+// long form command name, non-existing student
+// expected output: <empty line>
+
+//
+
+// TC-9
+// Tests Requirements R3, R7
+// short form command name, grade with no students
+// expected output: <empty line>
+
+//
+
+// TC-10
+// Tests Requirements R3, R7
+// long form command name, grade with students
+// expected output:
+
+//
+
+// TC-11
+// Tests Requirements R3, R8
+// short form command name, existing bus
+// expected output: 
+
+//
+
+// TC-12
+// Tests Requirements R3, R8
+// long form command name, non-existing bus
+// expected output: <empty line>
+
+//
