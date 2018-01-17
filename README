@@ -1,0 +1,4 @@
+To compile and run the program: 
+
+javac Schoolsearch.java
+java Schoolsearch
