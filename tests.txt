@@ -41,46 +41,72 @@ Student: TOWLEY Bus
 // long form command name, non-existing student, short form command
 // expected output: <empty line>
 
-//
+Student: TOWLER B
 
 // TC-7
 // Tests Requirements R3, R6
 // short form command name, existing teacher
-// expected output: 
+// expected output: LIBRANDI,TODD
+//                  HAVIR,BOBBIE
+//                  SARAO,DIEDRA
+//                  VANCOTT,MIKE
+//                  WICINSKY,TERESE
+//                  KOZOLA,BUSTER
+//                  MULLINGS,LEIGHANN
+//                  BUSSMANN,BILLY
+//                  BERBES,DICK
+//                  MULGREW,RANDELL
+//                  TOWLEY,LANE
 
-// 
+T: HAMER
 
 // TC-8
 // Tests Requirements R3, R6
-// long form command name, non-existing student
+// long form command name, non-existing teacher
 // expected output: <empty line>
 
-//
+Teacher: HAMMER
 
 // TC-9
 // Tests Requirements R3, R7
 // short form command name, grade with no students
 // expected output: <empty line>
 
-//
+G: 0
 
 // TC-10
 // Tests Requirements R3, R7
 // long form command name, grade with students
-// expected output:
+// expected output: COOKUS,XUAN
+//                  ELHADDAD,SHANTE
+//                  BRODERSEN,HYE
+//                  SWEDLUND,SHARRI
+//                  CIGANEK,MANIE
+//                  COVINGTON,TOMAS
+//                  EARLY,TORY
+//                  LINHART,LELA
+//                  THEUNISSEN,GRACE
 
-//
+Grade: 3
 
 // TC-11
 // Tests Requirements R3, R8
 // short form command name, existing bus
-// expected output: 
+// expected output: CORKER,CARTER,4,105
+//                  WORBINGTON,DEEDRA,4,112
+//                  CIGANEK,MANIE,3,107
+//                  SPANICEK,KENDRA,4,112
+//                  CLECKLER,FLOY,6,109
+//                  WICINSKY,TERESE,2,108
+//                  LINHART,LELA,3,107
+//                  DELUNA,KRYSTAL,4,112
+//                  COMO,ZANDRA,4,112
 
-//
+B: 53
 
 // TC-12
 // Tests Requirements R3, R8
 // long form command name, non-existing bus
 // expected output: <empty line>
 
-//
+Bus: 100
