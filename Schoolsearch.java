@@ -2,6 +2,10 @@ import java.io.*;
 import java.util.*; 
 import java.lang.*; 
 
+// CSC 365. Winter 2018
+// Lab 1-1
+// Dylan Carr, Amanda Cheng
+
 public class Schoolsearch {
 
    public class Student {
