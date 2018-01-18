@@ -95,7 +95,7 @@ public class Schoolsearch {
                     schoolsearch.student(students, teachers, lastNameNum, inList[2]); 
                 }
             } else if (instruction.equals("T:") || instruction.equals("Teacher:")) {
-                schoolsearch.teacher(students, lastNameNum); 
+                schoolsearch.teacher(students, teachers, lastNameNum); 
             } else if (instruction.equals("G:") || instruction.equals("Grade:")) {
                 if (listSize == 2) {
                     schoolsearch.grade(students, lastNameNum); 
@@ -132,27 +132,35 @@ public class Schoolsearch {
           if (students.get(i).getStLastName().equals(lastName)) {
               if (bus == null) {
                 for (int j = 0; j < tListSize; j++) {
-                    
+                    if (teachers.get(j).getClassroom().equals(students.get(i).getClassroom())) {
+                        System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + ","); 
+                        System.out.print(students.get(i).getGrade() + "," + students.get(i).getClassroom() + ","); 
+                        System.out.println(teachers.get(j).getTLastName() + "," + teachers.get(j).getTFirstName()); 
+                    }
                 }
-                System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + ","); 
-                System.out.print(students.get(i).getGrade() + "," + students.get(i).getClassroom() + ","); 
-                System.out.println(students.get(i).getTLastName() + "," + students.get(i).getTFirstName()); 
               } else {
                 if (bus.equals("B") || bus.equals("Bus"))
                     System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + "," + students.get(i).getBus()); 
               }
           }
       }
+  
   }
 
-  private void teacher(ArrayList<Student> students, String lastName) {
-      int listSize = students.size(); 
+  private void teacher(ArrayList<Student> students, ArrayList<Teacher> teachers, String lastName) {
+      int sListSize = students.size();
+      int tListSize = teachers.size();
 
-      for (int i = 0; i < listSize; i++) {
-          if ((students.get(i).getTLastName()).equals(lastName)) {
-              System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName()); 
+      for (int i = 0; i < tListSize; i++) {
+          if (teachers.get(i).getTLastName().equals(lastName)) {
+              for (int j = 0; j < sListSize; j++) {
+                  if (teachers.get(i).getClassroom().equals(students.get(j).getClassroom())) {
+                      System.out.println(students.get(j).getStLastName() + "," + students.get(j).getStFirstName()); 
+                  }
+              }
           }
       }
+  
   }
 
   private void grade(ArrayList<Student> students, String number) {
