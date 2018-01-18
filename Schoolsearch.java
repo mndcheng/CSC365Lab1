@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*; 
-import java.lang.*; 
 
 // CSC 365. Winter 2018
 // Lab 1-1
@@ -16,9 +15,10 @@ public class Schoolsearch {
       String classroom; 
       String bus;
       String gpa;
+      Teacher teacher; 
       
       public Student(String stLastName, String stFirstName, String grade, String classroom, 
-                     String bus, String gpa) {
+                     String bus, String gpa, Teacher teacher) {
                      
         this.stLastName = stLastName;
         this.stFirstName = stFirstName;
@@ -26,6 +26,7 @@ public class Schoolsearch {
         this.classroom = classroom;
         this.bus = bus;
         this.gpa = gpa; 
+        this.teacher = teacher; 
       }
       
       public String getStLastName() { return stLastName; }
@@ -33,10 +34,14 @@ public class Schoolsearch {
       public String getStFirstName() { return stFirstName; }
       
       public String getGrade() { return grade; }
+
+      public String getClassroom() { return classroom; }
       
       public String getBus() { return bus; }
       
       public String getGPA() { return gpa; }
+
+      public Teacher getTeacher() { return teacher; }
     
   }
 
@@ -82,7 +87,7 @@ public class Schoolsearch {
 
             if (inList.length > 1)  
                 lastNameNum = inList[1]; 
-                
+
             if (instruction.equals("S:") || instruction.equals("Student:")) {
                 if (listSize == 2) {
                     schoolsearch.student(students, teachers, lastNameNum, null); 
@@ -120,11 +125,15 @@ public class Schoolsearch {
   }
 
   private void student(ArrayList<Student> students, ArrayList<Teacher> teachers, String lastName, String bus) {
-      int listSize = students.size();  
+      int sListSize = students.size(); 
+      int tListSize = teachers.size(); 
 
-      for (int i = 0; i < listSize; i++) {
-          if ((students.get(i).getStLastName()).equals(lastName)) {
+      for (int i = 0; i < sListSize; i++) {
+          if (students.get(i).getStLastName().equals(lastName)) {
               if (bus == null) {
+                for (int j = 0; j < tListSize; j++) {
+                    
+                }
                 System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + ","); 
                 System.out.print(students.get(i).getGrade() + "," + students.get(i).getClassroom() + ","); 
                 System.out.println(students.get(i).getTLastName() + "," + students.get(i).getTFirstName()); 
@@ -255,7 +264,7 @@ private void bus(ArrayList<Student> students, String number) {
 
           while((line = br.readLine()) != null) {
 
-              String[] tokens = line.split(",");
+              String[] tokens = line.split(", ");
               Student s = new Student(tokens[0], tokens[1], tokens[2], tokens[3],
                       tokens[4], tokens[5], tokens[6], tokens[7]);
               list.add(s);
