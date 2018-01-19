@@ -14,11 +14,10 @@ public class Schoolsearch {
       String grade;
       String classroom; 
       String bus;
-      String gpa;
-      Teacher teacher; 
+      String gpa; 
       
       public Student(String stLastName, String stFirstName, String grade, String classroom, 
-                     String bus, String gpa, Teacher teacher) {
+                     String bus, String gpa) {
                      
         this.stLastName = stLastName;
         this.stFirstName = stFirstName;
@@ -26,7 +25,6 @@ public class Schoolsearch {
         this.classroom = classroom;
         this.bus = bus;
         this.gpa = gpa; 
-        this.teacher = teacher; 
       }
       
       public String getStLastName() { return stLastName; }
@@ -40,8 +38,6 @@ public class Schoolsearch {
       public String getBus() { return bus; }
       
       public String getGPA() { return gpa; }
-
-      public Teacher getTeacher() { return teacher; }
     
   }
 
@@ -101,9 +97,9 @@ public class Schoolsearch {
                     schoolsearch.grade(students, lastNameNum); 
                 } else if (listSize == 3) {
                     if (inList[2].equals("H") || inList[2].equals("High")) {
-                        schoolsearch.gradeHL(students, lastNameNum, 0);  
+                        schoolsearch.gradeHL(students, teachers, lastNameNum, 0);  
                     } else if (inList[2].equals("L") || inList[2].equals("Low")) {
-                        schoolsearch.gradeHL(students, lastNameNum, 1); 
+                        schoolsearch.gradeHL(students, teachers, lastNameNum, 1); 
                     }
                 }
             } else if (instruction.equals("B:") || instruction.equals("Bus:")) {
@@ -133,9 +129,9 @@ public class Schoolsearch {
               if (bus == null) {
                 for (int j = 0; j < tListSize; j++) {
                     if (teachers.get(j).getClassroom().equals(students.get(i).getClassroom())) {
-                        System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + ","); 
-                        System.out.print(students.get(i).getGrade() + "," + students.get(i).getClassroom() + ","); 
-                        System.out.println(teachers.get(j).getTLastName() + "," + teachers.get(j).getTFirstName()); 
+                        System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + 
+                                          "," + students.get(i).getGrade() + "," + students.get(i).getClassroom() + 
+                                          "," + teachers.get(j).getTLastName() + "," + teachers.get(j).getTFirstName()); 
                     }
                 }
               } else {
@@ -186,8 +182,9 @@ private void bus(ArrayList<Student> students, String number) {
 
   }
 
-  private void gradeHL(ArrayList<Student> students, String number, int HL) {
+  private void gradeHL(ArrayList<Student> students, ArrayList<Teacher> teachers, String number, int HL) {
       int listSize = students.size();
+      int tListSize = teachers.size(); 
       double gpa = 0;
       int index = 0;
       int count = 0; 
@@ -219,9 +216,13 @@ private void bus(ArrayList<Student> students, String number) {
       }
 
       if (exists) {
-      System.out.println(students.get(index).getStLastName() + "," + students.get(index).getStFirstName() + "," +
-                         students.get(index).getGPA() + "," + students.get(index).getTFirstName() + "," +
-                         students.get(index).getTLastName() + "," + students.get(index).getBus());
+          for (int j = 0; j < tListSize; j++) {
+            if (teachers.get(j).getClassroom().equals(students.get(index).getClassroom())) {
+                System.out.println(students.get(index).getStLastName() + "," + students.get(index).getStFirstName() + "," +
+                                    students.get(index).getGPA() + "," + teachers.get(j).getTFirstName() + "," +
+                                    teachers.get(j).getTLastName() + "," + students.get(index).getBus());
+            } 
+          }
       }
 
   }
@@ -274,7 +275,7 @@ private void bus(ArrayList<Student> students, String number) {
 
               String[] tokens = line.split(", ");
               Student s = new Student(tokens[0], tokens[1], tokens[2], tokens[3],
-                      tokens[4], tokens[5], tokens[6], tokens[7]);
+                      tokens[4], tokens[5]);
               list.add(s);
 
           }
