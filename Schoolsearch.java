@@ -261,13 +261,13 @@ private void bus(ArrayList<Student> students, String number) {
 
   }
 
-  private void classStudents(ArrayList<Student> students, String classroom); 
+  private void classStudents(ArrayList<Student> students, String classroom) {}
 
-  private void classTeachers(ArrayList<Teacher> teachers, String classroom); 
+  private void classTeachers(ArrayList<Teacher> teachers, String classroom) {}
 
-  private void gradeTeachers(ArrayList<Teacher> teachers, String grade); 
+  private void gradeTeachers(ArrayList<Teacher> teachers, String grade) {}
 
-  private void enrollments(ArrayList<Student> students); 
+  private void enrollments(ArrayList<Student> students) {}
 
   private void readFile(ArrayList<Student> list) {
 
