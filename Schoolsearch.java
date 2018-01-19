@@ -261,7 +261,13 @@ private void bus(ArrayList<Student> students, String number) {
 
   }
 
-  private void classStudents(ArrayList<Student> students, String classroom) {}
+  private void classStudents(ArrayList<Student> students, String classroom) {
+      int listSize = students.size(); 
+
+      for (int i = 0; i < listSize; i++) {
+          System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName()); 
+      }
+  }
 
   private void classTeachers(ArrayList<Teacher> teachers, String classroom) {}
 
