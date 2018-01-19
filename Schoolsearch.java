@@ -69,7 +69,8 @@ public class Schoolsearch {
         String in = "";
         String[] inList; 
 
-        schoolsearch.readFile(students); 
+        schoolsearch.readStudentFile(students); 
+        schoolsearch.readTeacherFile(teachers); 
 
         System.out.print("What do you want to search for? ");
 
@@ -135,8 +136,9 @@ public class Schoolsearch {
                     }
                 }
               } else {
-                if (bus.equals("B") || bus.equals("Bus"))
+                if (bus.equals("B") || bus.equals("Bus")) {
                     System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + "," + students.get(i).getBus()); 
+                }
               }
           }
       }
@@ -265,7 +267,9 @@ private void bus(ArrayList<Student> students, String number) {
       int listSize = students.size(); 
 
       for (int i = 0; i < listSize; i++) {
-          System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName()); 
+          if (students.get(i).getClassroom().equals(class)) {
+            System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName()); 
+          }
       }
   }
 
@@ -302,8 +306,8 @@ private void bus(ArrayList<Student> students, String number) {
 
           while((line = br.readLine()) != null) {              
                 String[] tokens = line.split(",");
-                Student s = new Student(tokens[0], tokens[1], tokens[2]);
-                list.add(s);
+                Teacher t = new Teacher(tokens[0], tokens[1], tokens[2]);
+                list.add(t);
             }
             
         } catch(IOException e) {
