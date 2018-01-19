@@ -291,28 +291,46 @@ private void bus(ArrayList<Student> students, String number) {
 
   private void enrollments(ArrayList<Student> students) {}
 
-  private void readFile(ArrayList<Student> list) {
+ private void readTeacherFile(ArrayList<Teacher> list) {
 
-      String fileName = "students.txt";
+      String fileName = "teachers.txt";
       String line = null;
 
       try {
           FileReader fr = new FileReader(fileName);
-
           BufferedReader br = new BufferedReader(fr);
 
+          while((line = br.readLine()) != null) {              
+                String[] tokens = line.split(",");
+                Student s = new Student(tokens[0], tokens[1], tokens[2]);
+                list.add(s);
+            }
+            
+        } catch(IOException e) {
+            System.out.println("File not found.");
+        }
+  }
+      
+
+  private void readStudentFile(ArrayList<Student> list) {
+
+      String fileName = "list.txt";
+      String line = null;
+
+      try {
+          FileReader fr = new FileReader(fileName);
+          BufferedReader br = new BufferedReader(fr);
+          
           while((line = br.readLine()) != null) {
-
-              String[] tokens = line.split(", ");
-              Student s = new Student(tokens[0], tokens[1], tokens[2], tokens[3],
-                      tokens[4], tokens[5]);
+              String[] tokens = line.split(",");
+              Student s = new Student(tokens[0], tokens[1], tokens[2],
+                                      tokens[3], tokens[4], tokens[5]);
               list.add(s);
-
           }
-
+          
       } catch(IOException e) {
           System.out.println("File not found.");
       }
   }
-
+   
 }
