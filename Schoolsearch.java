@@ -271,7 +271,23 @@ private void bus(ArrayList<Student> students, String number) {
 
   private void classTeachers(ArrayList<Teacher> teachers, String classroom) {}
 
-  private void gradeTeachers(ArrayList<Teacher> teachers, String grade) {}
+  private void gradeTeachers(ArrayList<Student> students, ArrayList<Teacher> teachers, String grade) {
+      int sListSize = students.size(); 
+      int tListSize = teachers.size(); 
+      String stClass; 
+
+      for (int i = 0; i < sListSize; i++) {
+          if (students.get(i).getGrade().equals(grade)) {
+              stClass = students.get(i).getClassroom(); 
+              for (int j = 0; j < tListSize; j++) {
+                  if (teachers.get(j).getClassroom().equals(stClass)) {
+                      System.out.println(teachers.get(j).getTLastName() + "," + 
+                        teachers.get(j).getTFirstName()); 
+                  }
+              }
+          }
+      }
+  }
 
   private void enrollments(ArrayList<Student> students) {}
 
