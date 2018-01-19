@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*; 
 
 // CSC 365. Winter 2018
-// Lab 1-1
+// Lab 1-2
 // Dylan Carr, Amanda Cheng
 
 public class Schoolsearch {
@@ -273,7 +273,15 @@ private void bus(ArrayList<Student> students, String number) {
       }
   }
 
-  private void classTeachers(ArrayList<Teacher> teachers, String classroom) {}
+  private void classTeachers(ArrayList<Teacher> teachers, String classroom) {
+      int listSize = teachers.size(); 
+
+      for (int i = 0; i < listSize; i++) {
+          if(teachers.get(i).getClassroom().equals(classroom)) {
+              System.out.println(teachers.get(i).getTLastName() + "," + teachers.get(i).getTFirstName()); 
+          }
+      }
+  }
 
   private void gradeTeachers(ArrayList<Student> students, ArrayList<Teacher> teachers, String grade) {
       int sListSize = students.size(); 
