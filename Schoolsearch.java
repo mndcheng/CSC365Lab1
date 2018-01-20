@@ -43,21 +43,22 @@ public class Schoolsearch {
 
   public class Teacher {
       
-        String classroom; 
         String tLastName;
         String tFirstName;
+        String classroom; 
 
-        public Teacher(String classroom, String tLastName, String tFirstName) {
-            this.classroom = classroom; 
+        public Teacher(String tLastName, String tFirstName, String classroom) {
             this.tLastName = tLastName;
             this.tFirstName = tFirstName;
+            this.classroom = classroom; 
         }
+
+        public String getTLastName() { return tLastName; }  
+
+        public String getTFirstName() { return tFirstName; }
 
         public String getClassroom() { return classroom; }
 
-        public String getTLastName() { return tLastName; }
-
-        public String getTFirstName() { return tFirstName; }
   }
 
   public static void main(String[] args) {
@@ -126,10 +127,12 @@ public class Schoolsearch {
       int tListSize = teachers.size(); 
 
       for (int i = 0; i < sListSize; i++) {
-          if (students.get(i).getStLastName().equals(lastName)) {
+          if (students.get(i).getStLastName().equals(lastName)) { 
               if (bus == null) {
                 for (int j = 0; j < tListSize; j++) {
+                    System.out.println(teachers.get(j).getClassroom() + " " + students.get(i).getClassroom()); 
                     if (teachers.get(j).getClassroom().equals(students.get(i).getClassroom())) {
+                        System.out.println("equals!!!!"); 
                         System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + 
                                           "," + students.get(i).getGrade() + "," + students.get(i).getClassroom() + 
                                           "," + teachers.get(j).getTLastName() + "," + teachers.get(j).getTFirstName()); 
@@ -267,7 +270,7 @@ private void bus(ArrayList<Student> students, String number) {
       int listSize = students.size(); 
 
       for (int i = 0; i < listSize; i++) {
-          if (students.get(i).getClassroom().equals(class)) {
+          if (students.get(i).getClassroom().equals(classroom)) {
             System.out.println(students.get(i).getStLastName() + "," + students.get(i).getStFirstName()); 
           }
       }
@@ -314,7 +317,8 @@ private void bus(ArrayList<Student> students, String number) {
 
           while((line = br.readLine()) != null) {              
                 String[] tokens = line.split(",");
-                Teacher t = new Teacher(tokens[0], tokens[1], tokens[2]);
+
+                Teacher t = new Teacher(tokens[0].trim(), tokens[1].trim(), tokens[2].trim());
                 list.add(t);
             }
             
@@ -335,7 +339,7 @@ private void bus(ArrayList<Student> students, String number) {
           
           while((line = br.readLine()) != null) {
               String[] tokens = line.split(",");
-              Student s = new Student(tokens[0], tokens[1], tokens[2],
+              Student s = new Student(tokens[0], tokens[1].trim(), tokens[2],
                                       tokens[3], tokens[4], tokens[5]);
               list.add(s);
           }
