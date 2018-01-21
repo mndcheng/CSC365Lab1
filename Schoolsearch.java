@@ -46,11 +46,13 @@ public class Schoolsearch {
         String tLastName;
         String tFirstName;
         String classroom; 
+        Boolean added; 
 
         public Teacher(String tLastName, String tFirstName, String classroom) {
             this.tLastName = tLastName;
             this.tFirstName = tFirstName;
             this.classroom = classroom; 
+            added = false; 
         }
 
         public String getTLastName() { return tLastName; }  
@@ -58,6 +60,10 @@ public class Schoolsearch {
         public String getTFirstName() { return tFirstName; }
 
         public String getClassroom() { return classroom; }
+
+        public Boolean getAdded() { return added; }
+
+        public void setAdded(Boolean bool) { added = bool; }
 
   }
 
@@ -102,6 +108,9 @@ public class Schoolsearch {
                         schoolsearch.gradeHL(students, teachers, lastNameNum, 0);  
                     } else if (inList[2].equals("L") || inList[2].equals("Low")) {
                         schoolsearch.gradeHL(students, teachers, lastNameNum, 1); 
+                    } else if (inList[2].equals("T") || inList[2].equals("Teachers")) {
+                        /* G[rade]: number T[eachers] */ 
+                        schoolsearch.gradeTeachers(students, teachers, lastNameNum); 
                     }
                 }
             } else if (instruction.equals("B:") || instruction.equals("Bus:")) {
@@ -110,6 +119,18 @@ public class Schoolsearch {
                 schoolsearch.average(students, lastNameNum); 
             } else if (instruction.equals("I") || instruction.equals("Info")) {
                 schoolsearch.info(students); 
+            } else if (instruction.equals("C:") || instruction.equals("Classroom: ")) {
+                /* let instruction be: "C[lassroom]: number S[tudent]/T[eacher]" */
+                String stuTea = inList[2]; 
+                if (stuTea.equals("S") || stuTea.equals("Student")) {
+                    schoolsearch.classStudents(students, lastNameNum); 
+                } else if (stuTea.equals("T") || stuTea.equals("Teacher")) {
+                    schoolsearch.classTeachers(teachers, lastNameNum); 
+                }
+            } else if (instruction.equals("E") || instruction.equals("Enrollments")) {
+                schoolsearch.enrollments(students); 
+            } else if (instruction.equals("A:") || instruction.equals("Analytics:")){
+                // 
             }
             
             if (!in.equals("Q") && !in.equals("Quit"))
@@ -290,21 +311,30 @@ private void bus(ArrayList<Student> students, String number) {
       int sListSize = students.size(); 
       int tListSize = teachers.size(); 
       String stClass; 
+      ArrayList<Teacher> teachList = new ArrayList<Teacher>(); 
 
       for (int i = 0; i < sListSize; i++) {
           if (students.get(i).getGrade().equals(grade)) {
               stClass = students.get(i).getClassroom(); 
               for (int j = 0; j < tListSize; j++) {
-                  if (teachers.get(j).getClassroom().equals(stClass)) {
-                      System.out.println(teachers.get(j).getTLastName() + "," + 
-                        teachers.get(j).getTFirstName()); 
+                  if (teachers.get(j).getClassroom().equals(stClass) && (teachers.get(j).getAdded() != true)) {
+                      teachList.add(teachers.get(j));
+                      teachers.get(j).setAdded(true); 
                   }
               }
           }
       }
+
+      for (int i = 0; i < teachList.size(); i++) {
+          System.out.println(teachList.get(i).getTLastName() + "," + teachList.get(i).getTFirstName()); 
+      }
   }
 
   private void enrollments(ArrayList<Student> students) {}
+
+  private void busAnalytics(ArrayList<Student> students) {
+      
+  }
 
  private void readTeacherFile(ArrayList<Teacher> list) {
 
