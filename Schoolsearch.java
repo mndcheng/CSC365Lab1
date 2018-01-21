@@ -15,7 +15,6 @@ public class Schoolsearch {
       String classroom; 
       String bus;
       String gpa; 
-      Boolean checkedBus; 
       
       public Student(String stLastName, String stFirstName, String grade, String classroom, 
                      String bus, String gpa) {
@@ -26,7 +25,6 @@ public class Schoolsearch {
         this.classroom = classroom;
         this.bus = bus;
         this.gpa = gpa; 
-        checkedBus = false; 
       }
       
       public String getStLastName() { return stLastName; }
@@ -40,10 +38,6 @@ public class Schoolsearch {
       public String getBus() { return bus; }
       
       public String getGPA() { return gpa; }
-
-      public Boolean getCheckedBus() { return checkedBus; }
-
-      public void setCheckedBus(Boolean bool) { checkedBus = bool; }
     
   }
 
@@ -135,8 +129,10 @@ public class Schoolsearch {
                 }
             } else if (instruction.equals("E") || instruction.equals("Enrollments")) {
                 schoolsearch.enrollments(students); 
-            } else if (instruction.equals("A:") || instruction.equals("Analytics:")){
-                // 
+            } else if (instruction.equals("An:") || instruction.equals("Analytics:")){
+                if (lastNameNum.equals("B") || lastNameNum.equals("Bus")) {
+                    schoolsearch.busAnalytics(students); 
+                }
             }
             
             if (!in.equals("Q") && !in.equals("Quit"))
@@ -159,7 +155,6 @@ public class Schoolsearch {
                 for (int j = 0; j < tListSize; j++) {
                     System.out.println(teachers.get(j).getClassroom() + " " + students.get(i).getClassroom()); 
                     if (teachers.get(j).getClassroom().equals(students.get(i).getClassroom())) {
-                        System.out.println("equals!!!!"); 
                         System.out.print(students.get(i).getStLastName() + "," + students.get(i).getStFirstName() + 
                                           "," + students.get(i).getGrade() + "," + students.get(i).getClassroom() + 
                                           "," + teachers.get(j).getTLastName() + "," + teachers.get(j).getTFirstName()); 
@@ -188,7 +183,7 @@ public class Schoolsearch {
               }
           }
       }
-  
+
   }
 
   private void grade(ArrayList<Student> students, String number) {
@@ -338,27 +333,64 @@ private void bus(ArrayList<Student> students, String number) {
 
   private void enrollments(ArrayList<Student> students) {}
 
+  public class Bus {
+      
+      double highestGPA; 
+      double lowestGPA; 
+      double avgGPA; 
+      String busNum; 
+
+      public Bus(double highestGPA, double lowestGPA, double avgGPA, String busNum) {
+          this.highestGPA = highestGPA;
+          this.lowestGPA = lowestGPA; 
+          this.avgGPA = avgGPA;
+          this.busNum = busNum; 
+      }
+
+      public void setHighGPA(double gpa) { highestGPA = gpa; }
+
+      public void setLowGPA(double gpa) { lowestGPA = gpa; }
+
+      public void setAvgGPA(double gpa) { avgGPA = gpa; }
+
+      public String getBusNum() { return busNum; }
+
+  }
+
   private void busAnalytics(ArrayList<Student> students) {
-    // print average gpa, highest gpa, lowest gpa for each bus route
     int listSize = students.size(); 
-    String curBus; 
-    int avgGPA; 
-    int highestGPA; 
-    int lowestGPA; 
-    int totalGPA; 
-    int numGPA; 
-    int curGPA; 
+    ArrayList<Bus> busList = new ArrayList<Bus>(); 
+    String curBus = ""; 
+    double highestGPA = 0, lowestGPA = 0, totalGPA = 0;
+    double curGPA = 0, thisGPA = 0; 
+    int numGPA = 0;
 
     for (int i = 0; i < listSize; i++) {
-        curGPA = Integer.parseInt(students.get(i).getGPA()); 
-        if (!students.get(i).getCheckedBus()) {
-            curBus = students.get(i).getBus();
-            students.get(i).setCheckedBus(true); 
-            avgGPA = totalGPA = numGPA = 0; 
+        curGPA = Double.parseDouble(students.get(i).getGPA()); 
+        if (!(busList.contains(students.get(i).getBus()))) { // may not work
+            curBus = students.get(i).getBus(); 
             highestGPA = lowestGPA = curGPA; 
+            numGPA++;
+            totalGPA += curGPA; 
+            Bus newBus = new Bus(highestGPA, lowestGPA, totalGPA / numGPA, curBus); 
+            busList.add(newBus); 
+        } else {
+            for (int j = 1; j < listSize; j++) {
+                thisGPA = Double.parseDouble(students.get(j).getGPA()); 
+                if (students.get(j).getBus().equals(curBus)) {
+                    totalGPA += thisGPA; 
+                    numGPA++; 
+                    if (thisGPA > highestGPA) {
+                        highestGPA = thisGPA; 
+                    } else if (thisGPA < lowestGPA) {
+                        lowestGPA = thisGPA; 
+                    }
+                }
+            }
         }
-
-    }  
+        System.out.println("Bus: " + curBus + " Avg GPA: " + String.format("%.2f", totalGPA / numGPA) + " Highest GPA: " +
+                     highestGPA + " Lowest GPA: " + lowestGPA);
+    }
 
   }
 
