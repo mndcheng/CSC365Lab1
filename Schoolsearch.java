@@ -15,6 +15,7 @@ public class Schoolsearch {
       String classroom; 
       String bus;
       String gpa; 
+      Boolean checkedBus; 
       
       public Student(String stLastName, String stFirstName, String grade, String classroom, 
                      String bus, String gpa) {
@@ -25,6 +26,7 @@ public class Schoolsearch {
         this.classroom = classroom;
         this.bus = bus;
         this.gpa = gpa; 
+        checkedBus = false; 
       }
       
       public String getStLastName() { return stLastName; }
@@ -38,6 +40,10 @@ public class Schoolsearch {
       public String getBus() { return bus; }
       
       public String getGPA() { return gpa; }
+
+      public Boolean getCheckedBus() { return checkedBus; }
+
+      public void setCheckedBus(Boolean bool) { checkedBus = bool; }
     
   }
 
@@ -333,7 +339,24 @@ private void bus(ArrayList<Student> students, String number) {
   private void enrollments(ArrayList<Student> students) {}
 
   private void busAnalytics(ArrayList<Student> students) {
-      
+    // print average gpa, highest gpa, lowest gpa for each bus route
+    int listSize = students.size(); 
+    String curBus; 
+    int avgGPA; 
+    int highestGPA; 
+    int lowestGPA; 
+    int totalGPA; 
+    int numGPA; 
+
+    for (int i = 0; i < listSize; i++) {
+        if (!students.get(i).getCheckedBus()) {
+            curBus = students.get(i).getBus();
+            students.get(i).setCheckedBus(true); 
+            avgGPA = totalGPA = numGPA = 0; 
+            highestGPA = lowestGPA = Integer.parseInt(students.get(i).getGPA()); 
+        }
+    }  
+
   }
 
  private void readTeacherFile(ArrayList<Teacher> list) {
