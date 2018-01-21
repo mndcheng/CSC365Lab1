@@ -347,14 +347,17 @@ private void bus(ArrayList<Student> students, String number) {
     int lowestGPA; 
     int totalGPA; 
     int numGPA; 
+    int curGPA; 
 
     for (int i = 0; i < listSize; i++) {
+        curGPA = Integer.parseInt(students.get(i).getGPA()); 
         if (!students.get(i).getCheckedBus()) {
             curBus = students.get(i).getBus();
             students.get(i).setCheckedBus(true); 
             avgGPA = totalGPA = numGPA = 0; 
-            highestGPA = lowestGPA = Integer.parseInt(students.get(i).getGPA()); 
+            highestGPA = lowestGPA = curGPA; 
         }
+
     }  
 
   }
