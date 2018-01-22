@@ -154,6 +154,67 @@ A: 0
 
 Info
 
+// TC-19
+// Tests Requirements NR1 
+// short form command name, classroom number, short form student 
+// expected output: COOKUS,XUAN
+//                  ELHADDAD,SHANTE
+//                  SWEDLUND,SHARRI
+//                  CIGANEK,MANIE
+//                  COVINGTON,TOMAS
+//                  EARLY,TORY
+//                  LINHART,LELA
+
+C: 107 S
+
+// TC-20
+// Tests Requirements NR1 
+// long form command name, invalid classroom number, long form student 
+// expected output: <empty line> 
+
+Classroom: 120 Student
+
+// TC-21
+// Tests Requirements NR3 
+// long form command name, grade number, long form teacher
+// expected output: FAFARD,ROCIO
+//                  ALPERT,JONATHAN
+
+Grade: 3 Teachers
+
+// TC-22
+// Tests Requirements NR3 
+// short form command name, empty grade number, short form teacher
+// expected output: <empty line> 
+
+G: 9 T
+
+// TC-23
+// Tests Requirements NR5 Bus Route 
+// short form command, long form bus 
+// expected output: Bus: 52 Avg GPA: 2.89 Highest GPA: 3.07 Lowest GPA: 2.78
+//                  Bus: 0 Avg GPA: 2.97 Highest GPA: 3.15 Lowest GPA: 2.8
+//                  Bus: 56 Avg GPA: 2.95 Highest GPA: 3.13 Lowest GPA: 2.78
+//                  Bus: 51 Avg GPA: 3.01 Highest GPA: 3.12 Lowest GPA: 2.91
+//                  Bus: 53 Avg GPA: 3.06 Highest GPA: 3.22 Lowest GPA: 2.79
+//                  Bus: 55 Avg GPA: 3.06 Highest GPA: 3.24 Lowest GPA: 2.76
+//                  Bus: 54 Avg GPA: 2.93 Highest GPA: 3.23 Lowest GPA: 2.82
+
+An: Bus
+
+// TC-23
+// Tests Requirements NR5 Bus Route 
+// long form command, short form bus 
+// expected output: Bus: 52 Avg GPA: 2.89 Highest GPA: 3.07 Lowest GPA: 2.78
+//                  Bus: 0 Avg GPA: 2.97 Highest GPA: 3.15 Lowest GPA: 2.8
+//                  Bus: 56 Avg GPA: 2.95 Highest GPA: 3.13 Lowest GPA: 2.78
+//                  Bus: 51 Avg GPA: 3.01 Highest GPA: 3.12 Lowest GPA: 2.91
+//                  Bus: 53 Avg GPA: 3.06 Highest GPA: 3.22 Lowest GPA: 2.79
+//                  Bus: 55 Avg GPA: 3.06 Highest GPA: 3.24 Lowest GPA: 2.76
+//                  Bus: 54 Avg GPA: 2.93 Highest GPA: 3.23 Lowest GPA: 2.82
+
+Analytics: B
+
 // TC-18
 // Tests Requirements R3, R12
 //  long form command name, quit command

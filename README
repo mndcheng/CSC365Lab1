@@ -2,3 +2,12 @@ To compile and run the program:
 
 javac Schoolsearch.java
 java Schoolsearch
+
+New Commands:
+C[lassroom]: classNumber S[tudent] // lists all students assigned
+C[lassroom]: classNumber T[eacher] // lists all teachers assigned 
+G[rade]: gradeNumber T[eacher] // lists all teachers for the grade 
+E[nrollments] // enrollments broken down by classroom 
+An[alytics]: G[rade] // GPA by grade level
+An[alytics]: T[eacher] // GPA by teacher 
+An[alytics]: B[us] // GPA by bus route 

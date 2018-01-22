@@ -119,7 +119,7 @@ public class Schoolsearch {
                 schoolsearch.average(students, lastNameNum);
             } else if (instruction.equals("I") || instruction.equals("Info")) {
                 schoolsearch.info(students);
-            } else if (instruction.equals("C:") || instruction.equals("Classroom: ")) {
+            } else if (instruction.equals("C:") || instruction.equals("Classroom:")) {
                 /* let instruction be: "C[lassroom]: number S[tudent]/T[eacher]" */
                 String stuTea = inList[2];
                 if (stuTea.equals("S") || stuTea.equals("Student")) {
