@@ -168,13 +168,28 @@ Info
 C: 107 S
 
 // TC-20
+// Tests Requirements NR2 
+// short form command name, classroom number, short form student 
+// expected output: HANTZ, JED
+
+C: 105 T
+
+// TC-21
 // Tests Requirements NR1 
 // long form command name, invalid classroom number, long form student 
 // expected output: <empty line> 
 
 Classroom: 120 Student
 
-// TC-21
+// TC-22
+// Tests Requirements NR2
+// long form command name, invalid classroom number, long form student 
+// expected output: <empty line> 
+
+Classroom: 117 Teacher
+
+
+// TC-23
 // Tests Requirements NR3 
 // long form command name, grade number, long form teacher
 // expected output: FAFARD,ROCIO
@@ -182,14 +197,32 @@ Classroom: 120 Student
 
 Grade: 3 Teachers
 
-// TC-22
+// TC-24
 // Tests Requirements NR3 
 // short form command name, empty grade number, short form teacher
 // expected output: <empty line> 
 
 G: 9 T
 
-// TC-23
+// TC-25
+// Tests Requirements NR4 
+// short form command name
+// expected output: 101: 1
+//                  102: 5
+//                  103: 2
+//                  104: 2
+//                  105: 6
+//                  106: 2
+//                  107: 7
+//                  108: 11
+//                  109: 5
+//                  110: 2
+//                  111: 9
+//                  112: 8
+
+E
+
+// TC-26
 // Tests Requirements NR5 Bus Route 
 // short form command, long form bus 
 // expected output: Bus: 52 Avg GPA: 2.89 Highest GPA: 3.07 Lowest GPA: 2.78
@@ -202,7 +235,7 @@ G: 9 T
 
 An: Bus
 
-// TC-23
+// TC-27
 // Tests Requirements NR5 Bus Route 
 // long form command, short form bus 
 // expected output: Bus: 52 Avg GPA: 2.89 Highest GPA: 3.07 Lowest GPA: 2.78
@@ -215,14 +248,44 @@ An: Bus
 
 Analytics: B
 
-// TC-18
+// TC-28
+// Tests Requirements NR5 Grade level
+// short form command, long form grade
+// expected output: Grade: 0 Avg GPA: 0.00 Highest GPA: 0.0 Lowest GPA: 0.0
+//                  Grade: 1 Avg GPA: 3.00 Highest GPA: 3.14 Lowest GPA: 2.85
+//                  Grade: 2 Avg GPA: 2.95 Highest GPA: 3.22 Lowest GPA: 2.76
+//                  Grade: 3 Avg GPA: 3.05 Highest GPA: 3.24 Lowest GPA: 2.79
+//                  Grade: 4 Avg GPA: 2.95 Highest GPA: 3.12 Lowest GPA: 2.78
+//                  Grade: 5 Avg GPA: 0.00 Highest GPA: 0.0 Lowest GPA: 0.0
+//                  Grade: 6 Avg GPA: 2.98 Highest GPA: 3.23 Lowest GPA: 2.78
+
+An: Grade
+
+// TC-29
+// Tests Requirements NR5 Teacher
+// short form command, long form teacher 
+// expected output: Teacher: COOL, REUBEN Avg GPA: 2.91 Highest GPA: 2.91 Lowest GPA: 2.91
+//                  Teacher: KERBS, BENITO Avg GPA: 2.98 Highest GPA: 3.13 Lowest GPA: 2.84
+//                  Teacher: FALKER, ADOLPH Avg GPA: 3.00 Highest GPA: 3.14 Lowest GPA: 2.85
+//                  Teacher: STEIB, GALE Avg GPA: 2.90 Highest GPA: 2.92 Lowest GPA: 2.88
+//                  Teacher: HANTZ, JED Avg GPA: 2.91 Highest GPA: 3.12 Lowest GPA: 2.78                Teacher: BODZIONY, LUZ Avg GPA: 3.09 Highest GPA: 3.15 Lowest GPA: 3.03
+//                  Teacher: FAFARD, ROCIO Avg GPA: 3.01 Highest GPA: 3.24 Lowest GPA: 2.79
+//                  Teacher: HAMER, GAVIN Avg GPA: 2.95 Highest GPA: 3.22 Lowest GPA: 2.76
+//                  Teacher: GAMBREL, JAE Avg GPA: 2.96 Highest GPA: 3.15 Lowest GPA: 2.78
+//                  Teacher: ALPERT, JONATHAN Avg GPA: 3.17 Highest GPA: 3.23 Lowest GPA: 3.11
+//                  Teacher: NISTENDIRK, NANCY Avg GPA: 2.96 Highest GPA: 3.23 Lowest GPA: 2.81
+//                  Teacher: CHIONCHIO, PERLA Avg GPA: 2.99 Highest GPA: 3.1 Lowest GPA: 2.87
+
+An: Teacher
+
+// TC-30
 // Tests Requirements R3, R12
 //  long form command name, quit command
 // expected output: program terminates
 
 Quit
 
-// TC-19
+// TC-31
 // Tests Requirements R3, R12
 //  short form command name, quit command
 // expected output: program terminates
