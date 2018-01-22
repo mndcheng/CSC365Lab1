@@ -128,7 +128,7 @@ public class Schoolsearch {
                     schoolsearch.classTeachers(teachers, lastNameNum);
                 }
             } else if (instruction.equals("E") || instruction.equals("Enrollments")) {
-                schoolsearch.enrollments(students);
+                schoolsearch.enrollments(students, teachers);
             } else if (instruction.equals("An:") || instruction.equals("Analytics:")){
                 if (lastNameNum.equals("B") || lastNameNum.equals("Bus")) {
                     schoolsearch.busAnalytics(students);
@@ -335,9 +335,9 @@ private void bus(ArrayList<Student> students, String number) {
       int sListSize = students.size();
       int tListSize = teachers.size();
 
-      for(i = 0; i < tListSize; i++) {
+      for(int i = 0; i < tListSize; i++) {
           int count = 0;
-          for(j = 0; j < sListSize(); j++) {
+          for(int j = 0; j < sListSize; j++) {
               if(students.get(j).getClassroom().equals(teachers.get(i).getClassroom())) {
                   count++;
               }
@@ -349,14 +349,14 @@ private void bus(ArrayList<Student> students, String number) {
 
   private void teacherAnalytics(ArrayList<Student> students, ArrayList<Teacher> teachers) {
       int numTeachers = teachers.size();
-      int avgGPA, highGPA, lowGPA = 0;
+      double avgGPA, highGPA, lowGPA = 0;
 
       for(int i = 0; i < numTeachers; i++) {
           avgGPA = calcTeacherAverageGrade(students, teachers.get(i).getClassroom());
           highGPA = calcTeacherHighGPA(students, teachers.get(i).getClassroom());
           lowGPA = calcTeacherLowGPA(students, teachers.get(i).getClassroom());
 
-          System.out.println("Teacher: " + teachers.get(i).getTLastName + ", " +
+          System.out.println("Teacher: " + teachers.get(i).getTLastName() + ", " +
                              teachers.get(i).getTFirstName() + " Avg GPA: " +
                              String.format("%.2f", avgGPA) + " Highest GPA: " +
                              highGPA + " Lowest GPA: " + lowGPA);
@@ -365,7 +365,8 @@ private void bus(ArrayList<Student> students, String number) {
 
   private double calcTeacherHighGPA(ArrayList<Student> students, String number) {
       int listSize = students.size();
-      double highGPA, currGPA = 0;
+      double highGPA = 0;
+      double currGPA = 0;
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getClassroom().equals(number))) {
@@ -383,7 +384,8 @@ private void bus(ArrayList<Student> students, String number) {
 
   private double calcTeacherLowGPA(ArrayList<Student> students, String number) {
       int listSize = students.size();
-      double lowGPA, currGPA = 0;
+      double lowGPA = 0;
+      double currGPA = 0;
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getClassroom().equals(number))) {
@@ -420,7 +422,9 @@ private void bus(ArrayList<Student> students, String number) {
          return avg;
    }
   private void gradeAnalytics(ArrayList<Student> students) {
-      int avgGPA, highGPA, lowGPA = 0;
+      double avgGPA = 0;
+      double highGPA = 0;
+      double lowGPA = 0;
       int numGrades = 7;
 
       for(int i = 0; i < numGrades; i++) {
@@ -437,7 +441,8 @@ private void bus(ArrayList<Student> students, String number) {
 
  private double calcHighGPA(ArrayList<Student> students, String number) {
      int listSize = students.size();
-     double highGPA, currGPA = 0;
+     double highGPA = 0;
+     double currGPA = 0;
 
      for (int i = 0; i < listSize; i++) {
          if ((students.get(i).getGrade().equals(number))) {
@@ -455,7 +460,8 @@ private void bus(ArrayList<Student> students, String number) {
 
  private double calcLowGPA(ArrayList<Student> students, String number) {
      int listSize = students.size();
-     double lowGPA, currGPA = 0;
+     double lowGPA = 0;
+     double currGPA = 0;
 
      for (int i = 0; i < listSize; i++) {
          if ((students.get(i).getGrade().equals(number))) {
