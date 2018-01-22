@@ -353,6 +353,12 @@ private void bus(ArrayList<Student> students, String number) {
 
       public void setAvgGPA(double gpa) { avgGPA = gpa; }
 
+      public double getHighestGPA() { return highestGPA; }
+
+      public double getLowestGPA() { return lowestGPA; }
+
+      public double getAvgGPA() { return avgGPA; }
+
       public String getBusNum() { return busNum; }
 
   }
@@ -360,36 +366,45 @@ private void bus(ArrayList<Student> students, String number) {
   private void busAnalytics(ArrayList<Student> students) {
     int listSize = students.size(); 
     ArrayList<Bus> busList = new ArrayList<Bus>(); 
+    ArrayList<String> seenBusNum = new ArrayList<String>(); 
     String curBus = ""; 
     double highestGPA = 0, lowestGPA = 0, totalGPA = 0;
     double curGPA = 0, thisGPA = 0; 
     int numGPA = 0;
 
     for (int i = 0; i < listSize; i++) {
-        curGPA = Double.parseDouble(students.get(i).getGPA()); 
-        if (!(busList.contains(students.get(i).getBus()))) { // may not work
+        if (!(seenBusNum.contains(students.get(i).getBus()))) {
+            curGPA = Double.parseDouble(students.get(i).getGPA()); 
             curBus = students.get(i).getBus(); 
-            highestGPA = lowestGPA = curGPA; 
+            seenBusNum.add(curBus); 
+            highestGPA = curGPA;
+            lowestGPA = curGPA; 
             numGPA++;
             totalGPA += curGPA; 
             Bus newBus = new Bus(highestGPA, lowestGPA, totalGPA / numGPA, curBus); 
             busList.add(newBus); 
-        } else {
+       
             for (int j = 1; j < listSize; j++) {
-                thisGPA = Double.parseDouble(students.get(j).getGPA()); 
                 if (students.get(j).getBus().equals(curBus)) {
+                    thisGPA = Double.parseDouble(students.get(j).getGPA()); 
                     totalGPA += thisGPA; 
                     numGPA++; 
-                    if (thisGPA > highestGPA) {
-                        highestGPA = thisGPA; 
-                    } else if (thisGPA < lowestGPA) {
-                        lowestGPA = thisGPA; 
+                    if (thisGPA > newBus.getHighestGPA()) {
+                        newBus.setHighGPA(thisGPA); 
+                    } 
+                    if (thisGPA < newBus.getLowestGPA()) {
+                        newBus.setLowGPA(thisGPA); 
                     }
+                    newBus.setAvgGPA(totalGPA / numGPA); 
                 }
             }
         }
-        System.out.println("Bus: " + curBus + " Avg GPA: " + String.format("%.2f", totalGPA / numGPA) + " Highest GPA: " +
-                     highestGPA + " Lowest GPA: " + lowestGPA);
+        totalGPA = numGPA = 0;  
+    }
+
+    for (int i = 0; i < busList.size(); i++) {
+        System.out.println("Bus: " + busList.get(i).getBusNum() + " Avg GPA: " + String.format("%.2f", busList.get(i).getAvgGPA()) + " Highest GPA: " +
+                     busList.get(i).getHighestGPA() + " Lowest GPA: " + busList.get(i).getLowestGPA());
     }
 
   }
