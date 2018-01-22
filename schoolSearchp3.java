@@ -133,6 +133,12 @@ public class Schoolsearch {
                 if (lastNameNum.equals("B") || lastNameNum.equals("Bus")) {
                     schoolsearch.busAnalytics(students);
                 }
+                if (lastNameNum.equals("G") || lastNameNum.equals("Grade")) {
+                    schoolsearch.gradeAnalytics(students);
+                }
+                if (lastNameNum.equals("T") || lastNameNum.equals("Teacher")) {
+                    schoolsearch.teacherAnalytics(students, teachers);
+                }
             }
 
             if (!in.equals("Q") && !in.equals("Quit"))
@@ -386,11 +392,13 @@ private void bus(ArrayList<Student> students, String number) {
       int listSize = students.size();
       double lowGPA = 0;
       double currGPA = 0;
+      int count = 0;
 
       for (int i = 0; i < listSize; i++) {
           if ((students.get(i).getClassroom().equals(number))) {
+             count++;
              currGPA = Double.parseDouble(students.get(i).getGPA());
-             if(i == 0) {
+             if(count == 1) {
                  lowGPA = currGPA;
              }
              else if(currGPA < lowGPA) {
@@ -462,11 +470,13 @@ private void bus(ArrayList<Student> students, String number) {
      int listSize = students.size();
      double lowGPA = 0;
      double currGPA = 0;
+     int count = 0;
 
      for (int i = 0; i < listSize; i++) {
          if ((students.get(i).getGrade().equals(number))) {
+            count++;
             currGPA = Double.parseDouble(students.get(i).getGPA());
-            if(i == 0) {
+            if(count == 1) {
                 lowGPA = currGPA;
             }
             else if(currGPA < lowGPA) {
